@@ -1,0 +1,10 @@
+#N canvas 466 101 450 300 12;
+#X obj 157 54 loadbang;
+#X obj 157 127 comport 0 9600;
+#X msg 157 96 ports;
+#X obj 252 160 print right;
+#X obj 157 190 print left;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 1 1 3 0;
+#X connect 2 0 1 0;
