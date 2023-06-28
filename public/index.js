@@ -152,10 +152,13 @@ window.onload = function() {
         break;
       case 'config':
         {
-          const { loadedProject, defaultProject } = data;
-          // $projectSelector.value = loadedProject;
+          const { defaultProject } = data;
           $defaultProject.innerHTML = (`${defaultProject || ''}`);
-          $loadedProject.innerHTML = (`${loadedProject || ''}`);
+        }
+        break;
+      case 'loaded':
+        {
+          $loadedProject.innerHTML = (`${data || ''}`);
         }
         break;
       default:

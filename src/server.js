@@ -15,16 +15,17 @@ const pkg = require(path.join(cwd, 'package.json'));
 
 let projectsList = [];
 let config = {
-  loadedProject: null,
+  //loadedProject: null,
   defaultProject: null,
 };
+let loadedProject = null;
 
 const port = process.env.PORT || 80;
 
 // UTILITIES ///////////////////////////////////////////////////////////////////
 
 const sendSocketMsg = (socket, msg, data) => {
-  socket.send(JSON.stringify({ msg, data }));
+  if (socket) { socket.send(JSON.stringify({ msg, data })); }
 }
 
 const ensureFolder = (folder) => {
@@ -42,8 +43,7 @@ const updateAndNotifyProjectsList = (socket = null) => {
       fs.existsSync(path.join(projectsFolder, file, 'main.pd'))
     );
   });
-
-  if (socket) { sendSocketMsg(socket, 'projects-list', projectsList); }
+  sendSocketMsg(socket, 'projects-list', projectsList);
 }
 
 const readConfigFromFile = () => {
@@ -60,25 +60,22 @@ const writeConfigToFile = () => {
 
 // subconfig must contain a subset of the above defined config object's fields
 const updateAndNotifyConfig = (subconfig, socket = null) => {
-  [
-    'loadedProject',
-    'defaultProject',
-  ].forEach(p => {
-    config[p] = projectsList.indexOf(subconfig[p]) !== -1
-              ? subconfig[p]
-              : projectsList[0] || null;
-  });
-  // const { loadedProject } = subconfig;
-  // config.loadedProject = projectsList.indexOf(loadedProject) !== -1
-  //                       ? loadedProject
-  //                       : projectsList[0] || null;
+  const { defaultProject } = subconfig;
+  config.defaultProject = projectsList.indexOf(defaultProject) !== -1
+                        ? defaultProject
+                        : projectsList[0] || null;
 
-  if (socket) { sendSocketMsg(socket, 'config', config); }
+  sendSocketMsg(socket, 'config', config);
+}
+
+const updateAndNotifyLoadedProject = (projectName, socket = null) => {
+  loadedProject = projectName;
+  sendSocketMsg(socket, 'loaded', loadedProject); 
 }
 
 // FUNCTIONS TRIGGERED BY INCOMING SOCKET MESSAGES /////////////////////////////
 
-const addProject = (project, socket) => {
+const addProject = (project, socket = null) => {
   project.forEach(file => {
     const folderPath = path.join(projectsFolder, path.dirname(file.path));
     ensureFolder(folderPath);
@@ -87,26 +84,35 @@ const addProject = (project, socket) => {
   updateAndNotifyProjectsList(socket);
 };
 
-const makeProjectDefault = (projectName, socket) => {
+const makeProjectDefault = (projectName, socket = null) => {
   config.defaultProject = projectName;
   writeConfigToFile();
   sendSocketMsg(socket, 'config', config);
 };
 
-const removeProject = (projectName, socket) => {
+const removeProject = (projectName, socket = null) => {
   fs.rmSync(path.join(projectsFolder, projectName), { recursive: true });
   updateAndNotifyProjectsList(socket);
   updateAndNotifyConfig(config, socket);
 };
 
-const loadProject = (projectName, socket) => {
-  config.loadedProject = projectName;
-  writeConfigToFile();
-  sendSocketMsg(socket, 'config', config);
-  const mainPatchFilename = path.join(__dirname, 'projects', projectName, 'main.pd');
+const loadProject = (projectName, socket = null) => {
+  updateAndNotifyLoadedProject(projectName, socket);
+  const mainPatchFilename = path.join(cwd, 'projects', projectName, 'main.pd');
   const pd = spawn(`${scriptFilename} ${mainPatchFilename}`, {
     stdio: 'inherit',
     shell: true,
+  });
+  pd.on('exit', (code, signal) => {
+    if (code) {
+      console.error('pd exited with code', code)
+      updateAndNotifyLoadedProject(null, socket);
+    } else if (signal) {
+      console.error('pd was killed with signal', signal);
+      updateAndNotifyLoadedProject(null, socket);
+    } else {
+      console.log('pd exited okay');
+    }
   });
 };
 
@@ -117,6 +123,9 @@ updateAndNotifyProjectsList();
 readConfigFromFile();
 updateAndNotifyConfig(config);
 writeConfigToFile();
+if (config.defaultProject) {
+  loadProject(config.defaultProject);
+}
 
 // WEBSOCKET COMMUNICATION /////////////////////////////////////////////////////
 
@@ -130,6 +139,7 @@ wss.on('connection', (ws) => {
   updateAndNotifyProjectsList(ws);
   readConfigFromFile();
   updateAndNotifyConfig(config, ws);
+  sendSocketMsg(ws, 'loaded', loadedProject);
 
   ws.on('message', (message) => {
     try {
