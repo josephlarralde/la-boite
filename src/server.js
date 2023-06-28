@@ -60,11 +60,12 @@ const writeConfigToFile = () => {
 
 // subconfig must contain a subset of the above defined config object's fields
 const updateAndNotifyConfig = (subconfig, socket = null) => {
-  const { defaultProject } = subconfig;
-  config.defaultProject = projectsList.indexOf(defaultProject) !== -1
-                        ? defaultProject
-                        : projectsList[0] || null;
-
+  if (subconfig.hasOwnProperty('defaultProject')) {
+    const { defaultProject } = subconfig;
+    config.defaultProject = projectsList.indexOf(defaultProject) !== -1
+                          ? defaultProject
+                          : null;
+  }
   sendSocketMsg(socket, 'config', config);
 }
 
