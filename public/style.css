@@ -35,7 +35,7 @@ div, input, select, button {
 #container {
   position: relative;
   text-align: center;
-  width: 250px;
+  width: 200px;
   padding: 10px;
   margin-top: 20px;
   margin: 0 auto;
@@ -50,7 +50,7 @@ div, input, select, button {
   margin: 10px 0px 10px 0px;
   padding: 0;
   width: 100%;
-  height: 250px;
+  height: 200px;
   border-radius: 50%;
   border: 1px dashed #000;
 }
@@ -62,8 +62,8 @@ div, input, select, button {
 #upload-btn-zone {
   display: flex;
   position: relative;
-  width: 250px;
-  margin-bottom: 20px;
+  width: 200px;
+  margin-bottom: 12px;
 }
 
 #upload-btn-label {
@@ -79,6 +79,7 @@ div, input, select, button {
   position: absolute;
 }
 
+#make-selected-project-default,
 #remove-selected-project,
 select#projects-list {
   margin-bottom: 3px;
@@ -89,30 +90,55 @@ select#projects-list {
   /*display: flex;*/
 }
 
+#default-project {
+
+}
+
 select#projects-list {
   position: relative;
-  padding-top: 0.25em;
+  /* padding-top: 0.25em; */
   /* width: 70%; */
 }
 
 
 #upload-btn-zone,
+#default-project,
+#loaded-project,
 select#projects-list,
+#make-selected-project-default,
 #remove-selected-project,
 #load-selected-project {
+  padding-top: 0.25em;
+  min-height: 1.5em;
   border-radius: 0.33em;
   background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 0 2px -1px rgba(0,0,0,0.2);
 }
 
+#default-project,
+#loaded-project {
+  background-color: #f8f8f8;
+  border: 1px dashed #000;
+}
+
 #upload-btn-zone:hover,
+#make-selected-project-default:hover,
 #remove-selected-project:hover,
 #load-selected-project:hover {
   background-color: #222;
   color: #ccc;
 }
 
-#load-selected-project {
-  margin-bottom: 3px;
+#upload-btn-zone:active,
+#make-selected-project-default:active,
+#remove-selected-project:active,
+#load-selected-project:active {
+  background-color: #777;
+  color: #ccc;
+}
+
+#default-project,
+#loaded-project {
+  margin-bottom: 12px;
 }

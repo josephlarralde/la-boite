@@ -22,32 +22,39 @@
     <div id="version-info"></div>
   </div>
   <div id="container">
-    <div id="instructions-1" class="instructions">
+    <div class="instructions">
       drop patches here ...
     </div>
 
     <div id="drop-zone">
-      <div id="drop-element">
-        <!-- <div id="smooth-arrow"></div> -->
-      </div>
+      <div id="drop-element"></div>
     </div>
 
     <div id="upload-btn-zone">
       <input type="file" id="upload-btn" name="file" webkitdirectory directory multiple>
-      <!-- <label for="file"> -->
       <div id="upload-btn-label">
         ... or use this button
       </div>
-      <!-- </label> -->
     </div>
 
-    <div id="instructions-2" class="instructions">
+    <div class="instructions">
+      default project
+    </div>
+    <div id="default-project"></div>
+
+    <div class="instructions">
+      loaded project
+    </div>
+    <div id="loaded-project"></div>
+
+    <div class="instructions">
       uploaded projects
     </div>
 
     <select id="projects-list"></select>
-    <button id="remove-selected-project">remove selected</button>
-    <button id="load-selected-project">load selected</button>
+    <button id="make-selected-project-default">make default</button>
+    <button id="remove-selected-project">remove</button>
+    <button id="load-selected-project">load</button>
   </div>
 
 </body>

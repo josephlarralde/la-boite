@@ -92,7 +92,10 @@ window.onload = function() {
   const $version = document.querySelector('#version-info');
   const $dropElement = document.querySelector('#drop-element');
   const $filesBtn = document.querySelector('#upload-btn');
+  const $defaultProject = document.querySelector('#default-project');
+  const $loadedProject = document.querySelector('#loaded-project');
   const $projectSelector = document.querySelector('#projects-list');
+  const $makeSelectedProjectDefault = document.querySelector('#make-selected-project-default');
   const $removeSelectedProject = document.querySelector('#remove-selected-project');
   const $loadSelectedProject = document.querySelector('#load-selected-project');
 
@@ -144,13 +147,15 @@ window.onload = function() {
             $projectSelector.appendChild(opt);
           }
           
-          $projectSelector.value = currentProject;
+          $projectSelector.value = currentProject || data[0];
         }
         break;
       case 'config':
         {
-          const { currentProject } = data;
-          $projectSelector.value = currentProject;
+          const { loadedProject, defaultProject } = data;
+          // $projectSelector.value = loadedProject;
+          $defaultProject.innerHTML = (`${defaultProject || ''}`);
+          $loadedProject.innerHTML = (`${loadedProject || ''}`);
         }
         break;
       default:
@@ -196,6 +201,10 @@ window.onload = function() {
     // console.log(e.target + ' loaded some files :\n');
     sendFiles(socket, e.target.files);
   }, false);
+
+  $makeSelectedProjectDefault.addEventListener('click', function(e) {
+    sendSocketMsg(socket, 'default', $projectSelector.value);
+  });
 
   $loadSelectedProject.addEventListener('click', function(e) {
     sendSocketMsg(socket, 'load', $projectSelector.value);
