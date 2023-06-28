@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>la boite</title>
+  <link rel="stylesheet" type="text/css" href="style.css"></style>
+  <!-- <script type="text/javascript" src="socket.io.slim.js"></script> -->
+  <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+  <div id="ascii-title">
+    <!-- http://www.patorjk.com/software/taag/#p=display&f=Modular&t=la%20boite%0A -->
+    <pre>
+ ___      _______    _______  _______  ___   _______  _______ 
+|   |    |   _   |  |  _    ||       ||   | |       ||       |
+|   |    |  |_|  |  | |_|   ||   _   ||   | |_     _||    ___|
+|   |    |       |  |       ||  | |  ||   |   |   |  |   |___ 
+|   |___ |       |  |  _   | |  |_|  ||   |   |   |  |    ___|
+|       ||   _   |  | |_|   ||       ||   |   |   |  |   |___ 
+|_______||__| |__|  |_______||_______||___|   |___|  |_______|
+    </pre>
+    <div id="version-info"></div>
+  </div>
+  <div id="container">
+    <div id="instructions-1" class="instructions">
+      drop patches here ...
+    </div>
+
+    <div id="drop-zone">
+      <div id="drop-element">
+        <!-- <div id="smooth-arrow"></div> -->
+      </div>
+    </div>
+
+    <div id="upload-btn-zone">
+      <input type="file" id="upload-btn" name="file" webkitdirectory directory multiple>
+      <!-- <label for="file"> -->
+      <div id="upload-btn-label">
+        ... or use this button
+      </div>
+      <!-- </label> -->
+    </div>
+
+    <div id="instructions-2" class="instructions">
+      uploaded projects
+    </div>
+
+    <select id="projects-list"></select>
+    <button id="remove-selected-project">remove selected</button>
+    <button id="load-selected-project">load selected</button>
+  </div>
+
+</body>
+</html>

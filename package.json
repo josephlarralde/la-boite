@@ -1,0 +1,23 @@
+{
+  "name": "la-boite",
+  "version": "1.0.0",
+  "description": "alternative to la-pedale with stereo line inputs / outputs on a raspberry pi 3B+",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pure",
+    "data",
+    "raspberry",
+    "pi",
+    "effects",
+    "box"
+  ],
+  "author": "joseph larralde",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.13.0"
+  }
+}
