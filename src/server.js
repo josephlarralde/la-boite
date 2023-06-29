@@ -120,8 +120,8 @@ const loadProject = (projectName, socket = null) => {
 // INITIALIZATION //////////////////////////////////////////////////////////////
 
 ensureFolder(projectsFolder);
-updateAndNotifyProjectsList();
 readConfigFromFile();
+updateAndNotifyProjectsList();
 updateAndNotifyConfig(config);
 writeConfigToFile();
 if (config.defaultProject) {
@@ -137,8 +137,8 @@ const wss = new WebSocketServer({
 
 wss.on('connection', (ws) => {
   sendSocketMsg(ws, 'version', pkg.version);
-  updateAndNotifyProjectsList(ws);
   readConfigFromFile();
+  updateAndNotifyProjectsList(ws);
   updateAndNotifyConfig(config, ws);
   sendSocketMsg(ws, 'loaded', loadedProject);
 
