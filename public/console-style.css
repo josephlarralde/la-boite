@@ -1,0 +1,139 @@
+html, body {
+  min-height: 100%;
+  background-color: black;
+  color: #0f0;
+}
+
+html, body, div, pre {
+  padding: 0;
+  margin: 0;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+div, input, select, button {
+  font-family: Consolas,monaco,monospace;
+  font-size: 0.9em;
+  width: 100%;
+}
+
+#ascii-title {
+  text-align: center;
+  font-size: 0.75em;
+  width: max-content;
+  margin: 0 auto;
+}
+
+#version-info {
+  text-align: right;
+}
+
+#container {
+  position: relative;
+  text-align: center;
+  width: 200px;
+  padding: 10px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+#drop-zone {
+  position: relative;
+}
+
+#drop-element {
+  background-color: transparent;
+  margin: 10px 0px 10px 0px;
+  padding: 0;
+  width: 100%;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px dashed #0f0;
+}
+
+#drop-element.over {
+  background-color: rgba(255,255,255,0.3);
+}
+
+#upload-btn-zone {
+  display: flex;
+  position: relative;
+  width: 200px;
+  margin-bottom: 12px;
+}
+
+#upload-btn-label {
+  padding: 1px;
+}
+
+#upload-btn {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+#make-selected-project-default,
+#remove-selected-project,
+select#projects-list {
+  margin-bottom: 3px;
+}
+
+.patch-selector-container {
+  width: 100%;
+}
+
+
+select#projects-list {
+  position: relative;
+}
+
+
+#upload-btn-zone,
+#default-project,
+#loaded-project,
+select#projects-list,
+#make-selected-project-default,
+#remove-selected-project,
+#load-selected-project {
+  padding-top: 0.25em;
+  min-height: 1.5em;
+  border-radius: 0.33em;
+  background-color: #0f0;
+  color: black;
+  border: 0;
+  box-shadow: 0 0 2px -1px rgba(0,0,0,0.2);
+}
+
+#default-project,
+#loaded-project {
+  background-color: rgba(0,255,0,0.66);
+  color: black;
+  border: 1px dashed #0f0;
+}
+
+#upload-btn-zone:hover,
+#make-selected-project-default:hover,
+#remove-selected-project:hover,
+#load-selected-project:hover {
+  background-color: rgba(0,255,0,0.66);
+  color: black;
+}
+
+#upload-btn-zone:active,
+#make-selected-project-default:active,
+#remove-selected-project:active,
+#load-selected-project:active {
+  background-color: rgba(0,255,0,0.33);
+  color: black;
+}
+
+#default-project,
+#loaded-project {
+  margin-bottom: 12px;
+}
