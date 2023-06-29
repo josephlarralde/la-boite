@@ -52,14 +52,14 @@ echo 'installing nodejs ...'
 
 curl -L https://git.io/n-install | bash -s -- -y
 source /home/pi/.bashrc
-n 10.15.3
+n 18.16.1
 
 
 ############## INSTALL THIS REPOSITORY
-echo 'cloning la-pedale repository ...'
+echo 'cloning la-boite repository ...'
 
 git clone https://github.com/josephlarralde/la-boite.git
-cd la-pedale
+cd la-boite
 npm install
 cd ..
 
