@@ -22,7 +22,7 @@ function scanFiles(item, files) {
   });
 }
 
-function sendFiles(socket, files) {
+async function sendFiles(socket, files) {
   droppedFiles = [];
   let projectName = null;
   let foundMain = false;
@@ -57,29 +57,17 @@ function sendFiles(socket, files) {
 
   var cnt = 0;
   for (var i = 0; i < droppedFiles.length; i++) {
-    const { name, webkitRelativePath } = droppedFiles[i];
+    const file = droppedFiles[i];
+    const { name, webkitRelativePath } = file;
     
     droppedFiles[i] = {
       name,
       path: webkitRelativePath,
-      contents: null,
+      contents: await file.text(),
     };
-
-    var reader = new FileReader();
-    reader.index = i;
-
-    reader.addEventListener('load', function(e) {
-      e.preventDefault();
-      console.log('reading stuff');
-      droppedFiles[e.target.index].contents = `${e.target.result}`;
-      cnt++;
-      if (cnt === droppedFiles.length) {
-        sendSocketMsg(socket, 'add', droppedFiles);
-      }
-    }, false);
-
-    reader.readAsText(files[i], i);
   }
+
+  sendSocketMsg(socket, 'add', droppedFiles);
 };
 
 function sendSocketMsg(socket, msg, data) {

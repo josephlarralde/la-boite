@@ -80,7 +80,7 @@ const addProject = (project, socket = null) => {
   project.forEach(file => {
     const folderPath = path.join(projectsFolder, path.dirname(file.path));
     ensureFolder(folderPath);
-    fs.writeFileSync(path.join(projectsFolder, file.path), file.contents);
+    fs.writeFileSync(path.join(projectsFolder, file.path), file.contents, { encoding: 'ascii' });
   });
   updateAndNotifyProjectsList(socket);
 };
@@ -102,6 +102,7 @@ const loadProject = (projectName, socket = null) => {
   const mainPatchFilename = path.join(cwd, 'projects', projectName, 'main.pd');
   const pd = spawn(`${scriptFilename} ${mainPatchFilename}`, {
     stdio: 'inherit',
+    stderr: 'inherit',
     shell: true,
   });
   pd.on('exit', (code, signal) => {
