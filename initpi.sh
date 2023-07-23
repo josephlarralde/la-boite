@@ -47,6 +47,14 @@ cd jl.pd.lib
 sudo make install
 cd ..
 
+############### INSTALL PD-PROJECT
+echo 'installing pd-project ...'
+
+git clone --recursive https://github.com/josephlarralde/pd-project
+cd pd-project
+sudo make install
+cd ..
+
 ############### INSTALL NODEJS
 echo 'installing nodejs ...'
 
