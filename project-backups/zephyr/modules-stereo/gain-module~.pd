@@ -1,0 +1,52 @@
+#N canvas 609 223 723 584 10;
+#X obj 46 233 r \$0-show-mapping-o;
+#X text 205 278 WxHx0+0 0x0+X+Y;
+#X msg 46 390 0;
+#N canvas 642 183 450 300 set-all-input-modes 0;
+#X obj 162 32 inlet;
+#X obj 79 128 s \$0-gain-mode;
+#X obj 162 55 t f;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 46 410 pd set-all-input-modes;
+#X obj 46 370 r \$0-reset-mapping-o;
+#X obj 60 275 loadbang;
+#X msg 46 253 vis 1;
+#N canvas 50 50 120 140 \$1-parameters 0;
+#X obj 9 8 project/parameter gain \$1 \$2 \$0;
+#X restore 46 339 pd \$1-parameters;
+#X obj 46 319 s pd-\$1-parameters;
+#X obj 512 118 line~;
+#X msg 512 99 \$1 10;
+#X obj 512 79 r \$0-gain-o;
+#X obj 51 51 cnv 15 162 66 empty empty \$1 4 10 0 12 #fcfcfc #404040
+0;
+#X obj 52 101 bng 15 250 50 0 \$0-reset-mapping-o \$0-reset-mapping-i
+reset_mapping 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 52 84 bng 15 250 50 0 \$0-show-mapping-o \$0-show-mapping-i
+show_mapping 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 55 70 hsl 155 12 0 1 0 0 \$0-gain-o \$0-gain-i gain 2 6 0 10
+#fcfcfc #000000 #b8b8b8 0 0;
+#X obj 321 192 *~;
+#X obj 99 480 project/module-preset \$1 \$2 \$0;
+#X msg 60 295 menuclose \, relocate 120x140+0+0 0x0+50+50;
+#X obj 321 72 r~ \$1-audio-in-left;
+#X obj 321 242 s~ \$1-audio-out-left;
+#X obj 356 192 *~;
+#X obj 356 93 r~ \$1-audio-in-right;
+#X obj 356 263 s~ \$1-audio-out-right;
+#X connect 0 0 6 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 5 0 18 0;
+#X connect 6 0 8 0;
+#X connect 9 0 16 1;
+#X connect 9 0 21 1;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 16 0 20 0;
+#X connect 18 0 8 0;
+#X connect 19 0 16 0;
+#X connect 21 0 23 0;
+#X connect 22 0 21 0;
+#X coords 0 -1 1 1 164 68 2 50 50;

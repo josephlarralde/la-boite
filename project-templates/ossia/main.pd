@@ -1,0 +1,12 @@
+#N canvas 361 354 450 300 10;
+#X obj 182 222 ossia;
+#X obj 182 132 loadbang;
+#X obj 182 152 delay 1000;
+#X obj 66 92 ossia.model mod;
+#X msg 223 180 expose osc 192.168.2.8 10001 10002;
+#X msg 182 202 expose oscquery;
+#X obj 58 42 ossia.param ctl1;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 2 0 5 0;
+#X connect 5 0 0 0;

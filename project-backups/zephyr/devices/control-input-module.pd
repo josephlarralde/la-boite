@@ -1,0 +1,230 @@
+#N canvas 532 294 762 362 10;
+#X obj 51 51 cnv 15 162 164 empty empty FC50\\\ OSC 4 10 0 12 #dfdfdf
+#404040 0;
+#X obj 55 103 hsl 155 12 0 1 0 0 fc50-osc-footsensor fc50-osc-footsensor-i
+foot\\\ pressure 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 197 69 tgl 15 0 fc50-osc-page0-switch5 fc50-osc-page0-switch5-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 180 69 tgl 15 0 fc50-osc-page0-switch4 fc50-osc-page0-switch4-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 163 69 tgl 15 0 fc50-osc-page0-switch3 fc50-osc-page0-switch3-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 146 69 tgl 15 0 fc50-osc-page0-switch2 fc50-osc-page0-switch2-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 129 69 tgl 15 0 fc50-osc-page0-switch1 fc50-osc-page0-switch1-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 197 86 tgl 15 0 fc50-osc-page1-switch5 fc50-osc-page1-switch5-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 180 86 tgl 15 0 fc50-osc-page1-switch4 fc50-osc-page1-switch4-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 163 86 tgl 15 0 fc50-osc-page1-switch3 fc50-osc-page1-switch3-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 146 86 tgl 15 0 fc50-osc-page1-switch2 fc50-osc-page1-switch2-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 129 86 tgl 15 0 fc50-osc-page1-switch1 fc50-osc-page1-switch1-i
+empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 52 69 vradio 16 1 0 2 fc50-osc-switchAB fc50-osc-switchAB-i
+empty 0 -8 0 10 #fcfcfc #000000 #000000 0;
+#X obj 69 84 cnv 12 12 12 empty empty B 2 10 0 12 #dfdfdf #000000 0
+;
+#X obj 69 69 cnv 12 12 12 empty empty A 2 10 0 12 #dfdfdf #000000 0
+;
+#X obj 55 148 hsl 155 12 0 1 0 0 usb-guitar-ribbon-position usb-guitar-ribbon-position-i
+position 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 55 162 hsl 155 12 0 1 0 0 usb-guitar-ribbon-pressure usb-guitar-ribbon-pressure-i
+pressure 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 55 188 hsl 155 12 0 1 0 0 usb-guitar-accel-elevation usb-guitar-accel-elevation-i
+elevation 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 55 202 hsl 155 12 0 1 0 0 usb-guitar-accel-azimuth usb-guitar-accel-azimuth-i
+azimuth 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 51 117 cnv 15 162 15 empty empty USB\\\ guitar 4 10 0 12 #dfdfdf
+#404040 0;
+#X obj 51 134 cnv 10 162 10 empty empty ribbon 4 6 0 10 #dfdfdf #404040
+0;
+#X obj 51 175 cnv 10 162 10 empty empty accelerometer 4 6 0 10 #dfdfdf
+#404040 0;
+#X obj 257 61 inlet;
+#X obj 333 127 route A B;
+#X obj 395 127 route A B;
+#X msg 575 136 open \$1;
+#X msg 669 136 close;
+#X msg 628 136 ports;
+#X floatatom 575 117 5 0 0 0 - - - 0;
+#X obj 335 239 ./fc50-osc-interface;
+#X obj 567 194 ./usb-guitar-interface;
+#X obj 567 214 outlet comport-info;
+#N canvas 230 153 743 569 display-all-receives 0;
+#X obj 81 355 r usb-guitar-ribbon-position;
+#X obj 100 378 r usb-guitar-ribbon-pressure;
+#X obj 365 405 r usb-guitar-accel-azimuth;
+#X obj 346 382 r usb-guitar-accel-elevation;
+#X obj 47 40 r fc50-osc-page0-switch1;
+#X obj 71 63 r fc50-osc-page0-switch2;
+#X obj 95 86 r fc50-osc-page0-switch3;
+#X obj 119 109 r fc50-osc-page0-switch4;
+#X obj 143 132 r fc50-osc-page0-switch5;
+#X obj 321 40 r fc50-osc-page1-switch1;
+#X obj 345 63 r fc50-osc-page1-switch2;
+#X obj 369 86 r fc50-osc-page1-switch3;
+#X obj 393 109 r fc50-osc-page1-switch4;
+#X obj 417 132 r fc50-osc-page1-switch5;
+#X obj 557 193 r fc50-osc-footsensor;
+#X obj 565 30 r fc50-osc-switchAB;
+#X obj 49 225 s fc50-osc-page0-switch1-i;
+#X obj 73 248 s fc50-osc-page0-switch2-i;
+#X obj 97 271 s fc50-osc-page0-switch3-i;
+#X obj 121 294 s fc50-osc-page0-switch4-i;
+#X obj 145 317 s fc50-osc-page0-switch5-i;
+#X obj 330 249 s fc50-osc-page1-switch1-i;
+#X obj 354 272 s fc50-osc-page1-switch2-i;
+#X obj 378 295 s fc50-osc-page1-switch3-i;
+#X obj 402 318 s fc50-osc-page1-switch4-i;
+#X obj 426 341 s fc50-osc-page1-switch5-i;
+#X obj 558 237 s fc50-osc-footsensor-i;
+#X obj 566 76 s fc50-osc-switchAB-i;
+#X obj 72 440 s usb-guitar-ribbon-position-i;
+#X obj 91 463 s usb-guitar-ribbon-pressure-i;
+#X obj 338 481 s usb-guitar-accel-elevation-i;
+#X obj 357 506 s usb-guitar-accel-azimuth-i;
+#X msg 46 116 set \$1;
+#X msg 66 136 set \$1;
+#X msg 92 156 set \$1;
+#X msg 112 176 set \$1;
+#X msg 134 198 set \$1;
+#X msg 318 129 set \$1;
+#X msg 338 149 set \$1;
+#X msg 364 169 set \$1;
+#X msg 384 189 set \$1;
+#X msg 406 211 set \$1;
+#X msg 555 215 set \$1;
+#X msg 566 51 set \$1;
+#X msg 77 398 set \$1;
+#X msg 97 418 set \$1;
+#X msg 333 432 set \$1;
+#X msg 353 452 set \$1;
+#X connect 0 0 44 0;
+#X connect 1 0 45 0;
+#X connect 2 0 47 0;
+#X connect 3 0 46 0;
+#X connect 4 0 32 0;
+#X connect 5 0 33 0;
+#X connect 6 0 34 0;
+#X connect 7 0 35 0;
+#X connect 8 0 36 0;
+#X connect 9 0 37 0;
+#X connect 10 0 38 0;
+#X connect 11 0 39 0;
+#X connect 12 0 40 0;
+#X connect 13 0 41 0;
+#X connect 14 0 42 0;
+#X connect 15 0 43 0;
+#X connect 32 0 16 0;
+#X connect 33 0 17 0;
+#X connect 34 0 18 0;
+#X connect 35 0 19 0;
+#X connect 36 0 20 0;
+#X connect 37 0 21 0;
+#X connect 38 0 22 0;
+#X connect 39 0 23 0;
+#X connect 40 0 24 0;
+#X connect 41 0 25 0;
+#X connect 42 0 26 0;
+#X connect 43 0 27 0;
+#X connect 44 0 28 0;
+#X connect 45 0 29 0;
+#X connect 46 0 30 0;
+#X connect 47 0 31 0;
+#X restore 323 46 pd display-all-receives;
+#X obj 257 85 route simulate togglemodes mutexgroups filterzeros comport
+;
+#X obj 457 127 route A B;
+#N canvas 63 88 450 300 simulate 0;
+#X obj 149 116 makefilename %.0f;
+#X obj 110 75 route A;
+#X obj 149 95 unpack f f;
+#X obj 149 137 pack s f;
+#X msg 113 118 A \$1;
+#X obj 103 188 t a;
+#X obj 98 217 outlet;
+#X obj 110 46 inlet;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 1 2 0;
+#X connect 2 0 0 0;
+#X connect 2 1 3 1;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 7 0 1 0;
+#X restore 257 189 pd simulate;
+#N canvas 265 126 681 640 gated-receives 0;
+#X obj 46 385 ./gated-receive fc50-osc-footsensor fc50-osc-page0-switch2
+A2-footpress;
+#X obj 46 414 ./gated-receive fc50-osc-footsensor fc50-osc-page0-switch3
+A3-footpress;
+#X obj 46 443 ./gated-receive fc50-osc-footsensor fc50-osc-page0-switch4
+A4-footpress;
+#X obj 46 472 ./gated-receive fc50-osc-footsensor fc50-osc-page0-switch5
+A5-footpress;
+#X obj 46 204 ./gated-receive usb-guitar-ribbon-position fc50-osc-page0-switch1
+A1-position;
+#X obj 46 233 ./gated-receive usb-guitar-ribbon-position fc50-osc-page0-switch2
+A2-position;
+#X obj 46 262 ./gated-receive usb-guitar-ribbon-position fc50-osc-page0-switch3
+A3-position;
+#X obj 46 291 ./gated-receive usb-guitar-ribbon-position fc50-osc-page0-switch4
+A4-position;
+#X obj 46 320 ./gated-receive usb-guitar-ribbon-position fc50-osc-page0-switch5
+A5-position;
+#X obj 313 204 ./gated-receive usb-guitar-ribbon-pressure fc50-osc-page0-switch1
+A1-pressure;
+#X obj 313 233 ./gated-receive usb-guitar-ribbon-pressure fc50-osc-page0-switch2
+A2-pressure;
+#X obj 313 262 ./gated-receive usb-guitar-ribbon-pressure fc50-osc-page0-switch3
+A3-pressure;
+#X obj 313 291 ./gated-receive usb-guitar-ribbon-pressure fc50-osc-page0-switch4
+A4-pressure;
+#X obj 313 320 ./gated-receive usb-guitar-ribbon-pressure fc50-osc-page0-switch5
+A5-pressure;
+#X obj 46 52 ./gated-receive usb-guitar-accel-elevation fc50-osc-page0-switch1
+A1-elevation;
+#X obj 46 81 ./gated-receive usb-guitar-accel-elevation fc50-osc-page0-switch2
+A2-elevation;
+#X obj 46 110 ./gated-receive usb-guitar-accel-elevation fc50-osc-page0-switch3
+A3-elevation;
+#X obj 46 139 ./gated-receive usb-guitar-accel-elevation fc50-osc-page0-switch4
+A4-elevation;
+#X obj 46 168 ./gated-receive usb-guitar-accel-elevation fc50-osc-page0-switch5
+A5-elevation;
+#X obj 313 52 ./gated-receive usb-guitar-accel-azimuth fc50-osc-page0-switch1
+A1-azimuth;
+#X obj 313 81 ./gated-receive usb-guitar-accel-azimuth fc50-osc-page0-switch2
+A2-azimuth;
+#X obj 313 110 ./gated-receive usb-guitar-accel-azimuth fc50-osc-page0-switch3
+A3-azimuth;
+#X obj 313 139 ./gated-receive usb-guitar-accel-azimuth fc50-osc-page0-switch4
+A4-azimuth;
+#X obj 313 168 ./gated-receive usb-guitar-accel-azimuth fc50-osc-page0-switch5
+A5-azimuth;
+#X obj 46 356 ./gated-receive fc50-osc-footsensor fc50-osc-page0-switch1
+A1-footpress;
+#X restore 335 262 pd gated-receives;
+#X connect 22 0 33 0;
+#X connect 23 0 29 1;
+#X connect 23 1 29 4;
+#X connect 24 0 29 2;
+#X connect 24 1 29 5;
+#X connect 25 0 30 0;
+#X connect 26 0 30 0;
+#X connect 27 0 30 0;
+#X connect 28 0 25 0;
+#X connect 30 0 31 0;
+#X connect 33 0 35 0;
+#X connect 33 1 23 0;
+#X connect 33 2 24 0;
+#X connect 33 3 34 0;
+#X connect 33 4 30 0;
+#X connect 34 0 29 3;
+#X connect 34 1 29 6;
+#X connect 35 0 29 0;
+#X coords 0 -1 1 1 164 166 2 50 50;

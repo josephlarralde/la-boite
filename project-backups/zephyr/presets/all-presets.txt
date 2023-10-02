@@ -1,0 +1,4 @@
+loop;
+pitchou;
+through;
+freeze-and-blur;

@@ -2,7 +2,13 @@
 Thumbs.db
 
 node_modules/
+
+# this one is used by the node server to store all uploaded projects
+# don't put things manually here or they will be swiped
 projects/
+
+# ignore dirty tests
 tmp/
 
+# managed automatically by the node server, don't edit
 src/config.json

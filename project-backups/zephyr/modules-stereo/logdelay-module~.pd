@@ -1,0 +1,137 @@
+#N canvas 456 226 723 584 10;
+#X obj 72 324 r \$0-show-mapping-o;
+#X text 231 369 WxHx0+0 0x0+X+Y;
+#X msg 72 481 0;
+#N canvas 642 183 401 354 set-all-input-modes 0;
+#X obj 162 32 inlet;
+#X obj 79 128 s \$0-gain-mode;
+#X obj 90 147 s \$0-drywet-mode;
+#X obj 103 166 s \$0-envelope-mode;
+#X obj 117 185 s \$0-firstdelay-mode;
+#X obj 130 204 s \$0-factor-mode;
+#X obj 141 223 s \$0-panning-mode;
+#X obj 157 244 s \$0-width-mode;
+#X obj 169 263 s \$0-width-envelope-mode;
+#X obj 180 282 s \$0-volume-mode;
+#X obj 162 55 t f f f f f f f f f;
+#X connect 0 0 10 0;
+#X connect 10 0 1 0;
+#X connect 10 1 2 0;
+#X connect 10 2 3 0;
+#X connect 10 3 4 0;
+#X connect 10 4 5 0;
+#X connect 10 5 6 0;
+#X connect 10 6 7 0;
+#X connect 10 7 8 0;
+#X connect 10 8 9 0;
+#X restore 72 501 pd set-all-input-modes;
+#X obj 72 461 r \$0-reset-mapping-o;
+#X obj 86 366 loadbang;
+#X msg 72 344 vis 1;
+#N canvas 50 50 524 263 \$1-parameters 0;
+#X obj 9 131 project/parameter volume \$1 \$2 \$0;
+#X obj 110 131 project/parameter panning \$1 \$2 \$0;
+#X obj 211 131 project/parameter width \$1 \$2 \$0;
+#X obj 110 8 project/parameter drywet \$1 \$2 \$0;
+#X obj 9 8 project/parameter gain \$1 \$2 \$0;
+#X obj 211 8 project/parameter envelope \$1 \$2 \$0;
+#X obj 312 8 project/parameter firstdelay \$1 \$2 \$0;
+#X obj 413 8 project/parameter factor \$1 \$2 \$0;
+#X obj 312 131 project/parameter width-envelope \$1 \$2 \$0;
+#X restore 72 430 pd \$1-parameters;
+#X obj 72 410 s pd-\$1-parameters;
+#X obj 568 79 r \$0-drywet-o;
+#X msg 568 98 drywet \$1;
+#X obj 362 350 *~;
+#X obj 377 315 line~;
+#X msg 377 296 \$1 10;
+#X obj 377 276 r \$0-gain-o;
+#X obj 568 41 r \$0-voices-o;
+#X msg 568 60 voices \$1;
+#X obj 568 155 r \$0-firstdelay-o;
+#X msg 568 174 firstdelay \$1;
+#X obj 568 193 r \$0-factor-o;
+#X msg 568 212 factor \$1;
+#X msg 568 250 pan \$1;
+#X obj 568 269 r \$0-width-o;
+#X msg 568 288 width \$1;
+#X obj 51 51 cnv 15 162 204 empty empty \$1 4 10 0 12 #fcfcfc #404040
+0;
+#X obj 55 166 hsl 155 12 0 1 0 0 \$0-panning-o \$0-panning-i panning
+2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 55 180 hsl 155 12 0 1 0 0 \$0-width-o \$0-width-i width 2 6
+0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X floatatom 52 149 10 0 0 1 factor \$0-factor-i \$0-factor-o 0;
+#X floatatom 52 70 10 1 1000 1 voices \$0-voices-i \$0-voices-o 0;
+#X floatatom 52 115 10 -1 1 1 envelope \$0-envelope-i \$0-envelope-o
+0;
+#X obj 55 101 hsl 155 12 0 1 0 0 \$0-drywet-o \$0-drywet-i drywet 2
+6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 55 208 hsl 155 12 0 1 0 0 \$0-volume-o \$0-volume-i volume 2
+6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 52 239 bng 15 250 50 0 \$0-reset-mapping-o \$0-reset-mapping-i
+reset_mapping 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 52 222 bng 15 250 50 0 \$0-show-mapping-o \$0-show-mapping-i
+show_mapping 17 7 0 10 #fcfcfc #000000 #000000;
+#X floatatom 52 132 10 0.001 1e+06 1 firstdelay \$0-firstdelay-i \$0-firstdelay-o
+0;
+#X obj 55 87 hsl 155 12 0 1 0 0 \$0-gain-o \$0-gain-i gain 2 6 0 10
+#fcfcfc #000000 #b8b8b8 0 0;
+#X obj 362 473 *~;
+#X obj 467 472 *~;
+#X obj 482 437 line~;
+#X msg 482 417 \$1 10;
+#X obj 482 397 r \$0-volume-o;
+#X obj 362 511 s~ \$1-audio-out-left;
+#X obj 467 491 s~ \$1-audio-out-right;
+#X msg 568 136 envelope amplitude \$1;
+#X msg 567 327 envelope width \$1;
+#X obj 568 117 r \$0-envelope-o;
+#X obj 55 194 hsl 155 12 0 1 0 0 \$0-width-envelope-o \$0-width-envelope-i
+width\\\ envelope 2 6 0 10 #fcfcfc #000000 #b8b8b8 0 0;
+#X obj 567 308 r \$0-width-envelope-o;
+#X obj 568 231 r \$0-panning-o;
+#X obj 362 534 project/module-preset \$1 \$2 \$0;
+#X obj 362 553 project/parameter-simple voices \$1 \$2 \$0;
+#X msg 86 386 menuclose \, relocate 524x263+0+0 0x0+50+50;
+#X obj 193 51 cnv 16 16 16 empty empty \$3 4 10 0 12 #fcfcfc #404040
+0;
+#X obj 362 374 jl/logdelay~ \$4 \$5;
+#X obj 310 185 r~ \$1-audio-in-left;
+#X obj 363 210 r~ \$1-audio-in-right;
+#X connect 0 0 6 0;
+#X connect 4 0 2 0;
+#X connect 5 0 51 0;
+#X connect 6 0 8 0;
+#X connect 9 0 10 0;
+#X connect 10 0 53 1;
+#X connect 11 0 53 0;
+#X connect 12 0 11 1;
+#X connect 13 0 12 0;
+#X connect 14 0 13 0;
+#X connect 15 0 16 0;
+#X connect 16 0 53 1;
+#X connect 17 0 18 0;
+#X connect 18 0 53 1;
+#X connect 19 0 20 0;
+#X connect 20 0 53 1;
+#X connect 21 0 53 1;
+#X connect 22 0 23 0;
+#X connect 23 0 53 1;
+#X connect 36 0 41 0;
+#X connect 37 0 42 0;
+#X connect 38 0 36 1;
+#X connect 38 0 37 1;
+#X connect 39 0 38 0;
+#X connect 40 0 39 0;
+#X connect 43 0 53 1;
+#X connect 44 0 53 1;
+#X connect 45 0 43 0;
+#X connect 47 0 44 0;
+#X connect 48 0 21 0;
+#X connect 51 0 8 0;
+#X connect 53 0 36 0;
+#X connect 53 1 37 0;
+#X connect 54 0 11 0;
+#X connect 55 0 11 0;
+#X coords 0 -1 1 1 164 206 2 50 50;
