@@ -1,4 +1,2 @@
-all freeze-and-blur gain 0 1 1 1 0 0 0;
-all through gain 1 1 11 1 0 0 0;
-all pitchou gain 0 1 1 1 0 0 0;
-all loop gain 0 1 1 1 0 0 0;
+all loop2 gain 1 0 5 0 1 0 0;
+all loop gain 1 0 5 0 1 0 0;

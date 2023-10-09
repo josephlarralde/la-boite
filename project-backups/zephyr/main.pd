@@ -1,25 +1,5 @@
-#N canvas 3 25 771 732 10;
+#N canvas 239 68 777 674 10;
 #N canvas 151 103 902 620 ctlbus-definitions-and-routing 0;
-#X obj 79 43 project/ctlbus-from-receive zephyr fc50-osc-page0-switch1
-1;
-#X obj 79 62 project/ctlbus-from-receive zephyr fc50-osc-page0-switch2
-2;
-#X obj 79 81 project/ctlbus-from-receive zephyr fc50-osc-page0-switch3
-3;
-#X obj 79 100 project/ctlbus-from-receive zephyr fc50-osc-page0-switch4
-4;
-#X obj 79 119 project/ctlbus-from-receive zephyr fc50-osc-page0-switch5
-5;
-#X obj 79 143 project/ctlbus-from-receive zephyr fc50-osc-page1-switch1
-6;
-#X obj 79 162 project/ctlbus-from-receive zephyr fc50-osc-page1-switch2
-7;
-#X obj 79 181 project/ctlbus-from-receive zephyr fc50-osc-page1-switch3
-8;
-#X obj 79 200 project/ctlbus-from-receive zephyr fc50-osc-page1-switch4
-9;
-#X obj 79 219 project/ctlbus-from-receive zephyr fc50-osc-page1-switch5
-10;
 #X obj 79 243 project/ctlbus-from-receive zephyr fc50-osc-footsensor
 11;
 #X obj 73 274 project/ctlbus-from-receive zephyr A1-footpress 16;
@@ -61,162 +41,146 @@
 15, f 64;
 #X obj 478 82 project/ctlbus-from-receive zephyr usb-guitar-ribbon-position
 14, f 64;
-#X connect 36 0 37 0;
-#X restore 261 606 pd ctlbus-definitions-and-routing;
-#X obj 261 159 ./devices/control-input-module;
-#X obj 256 509 cnv 15 160 45 empty empty project 4 11 0 14 #e0e0e0
+#X obj 79 43 project/ctlbus-from-receive zephyr fc50-osc-page1-switch1
+1;
+#X obj 79 62 project/ctlbus-from-receive zephyr fc50-osc-page1-switch2
+2;
+#X obj 79 81 project/ctlbus-from-receive zephyr fc50-osc-page1-switch3
+3;
+#X obj 79 100 project/ctlbus-from-receive zephyr fc50-osc-page1-switch4
+4;
+#X obj 79 119 project/ctlbus-from-receive zephyr fc50-osc-page1-switch5
+5;
+#X obj 79 143 project/ctlbus-from-receive zephyr fc50-osc-page2-switch1
+6;
+#X obj 79 162 project/ctlbus-from-receive zephyr fc50-osc-page2-switch2
+7;
+#X obj 79 181 project/ctlbus-from-receive zephyr fc50-osc-page2-switch3
+8;
+#X obj 79 200 project/ctlbus-from-receive zephyr fc50-osc-page2-switch4
+9;
+#X obj 79 219 project/ctlbus-from-receive zephyr fc50-osc-page2-switch5
+10;
+#X connect 26 0 27 0;
+#X restore 262 546 pd ctlbus-definitions-and-routing;
+#X obj 257 449 cnv 15 160 45 empty empty project 4 11 0 14 #e0e0e0
 #404040 0;
-#X msg 261 532 open;
-#X msg 295 532 save;
-#X msg 329 532 saveas;
-#N canvas 294 333 672 327 set-toggles-behaviour 0;
-#X obj 215 273 outlet;
-#X msg 333 132 mutexgroups A 1 1 2 2 3;
-#X obj 268 67 t b;
-#X obj 163 8 inlet;
-#X obj 49 117 list prepend simulate;
-#X obj 49 137 list trim;
-#X obj 166 31 t b b;
-#X msg 338 194 togglemodes B 1 1 1 1 1;
-#X msg 345 215 mutexgroups B 1 1 1 1 1;
-#X msg 336 153 filterzeros A 0 0 0 0 0;
-#X msg 344 238 filterzeros B 1 1 1 1 1;
-#X msg 49 96 A 0 \, A 1 \, 1 0 \, 1 1 \, A 0 \, A 1;
-#X msg 333 111 togglemodes A 1 1 1 1 1;
-#X connect 1 0 0 0;
-#X connect 2 0 12 0;
-#X connect 2 0 1 0;
-#X connect 2 0 7 0;
-#X connect 2 0 8 0;
-#X connect 2 0 9 0;
-#X connect 2 0 10 0;
-#X connect 3 0 6 0;
-#X connect 4 0 5 0;
-#X connect 5 0 0 0;
-#X connect 6 0 11 0;
-#X connect 6 1 2 0;
-#X connect 7 0 0 0;
-#X connect 8 0 0 0;
-#X connect 9 0 0 0;
-#X connect 10 0 0 0;
-#X connect 11 0 4 0;
-#X connect 12 0 0 0;
-#X restore 270 137 pd set-toggles-behaviour;
-#X obj 261 97 list trim;
-#X msg 302 51 open \$1;
-#X floatatom 302 32 5 0 0 0 - - - 0;
-#X msg 356 51 close;
-#X msg 261 51 ports;
-#X obj 261 332 print comport;
-#X obj 261 78 list prepend comport;
+#X msg 262 472 open;
+#X msg 296 472 save;
+#X msg 330 472 saveas;
 #N canvas 333 370 490 203 lastpath 0;
-#X msg 51 69 /Users/larralde/Projects/git-repositories/josephlarralde/la-boite/tmp/my-projects/zephyr/presets
+#X msg 51 69 /Users/larralde/Projects/git-repositories/josephlarralde/la-boite/project-backups/zephyr/presets
 ;
 #X obj 51 27 inlet;
 #X obj 51 110 outlet;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
-#X restore 431 587 pd lastpath;
-#X obj 504 588 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#X restore 432 527 pd lastpath;
+#X obj 505 528 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
 #N canvas 293 246 518 503 send-preset-cmds 0;
-#X obj 59 8 inlet;
-#X obj 157 372 s friz-preset-cmd;
-#X obj 261 267 s grzsh-preset-cmd;
-#X obj 183 351 s bounce-preset-cmd;
-#X obj 242 288 s aeiou-preset-cmd;
-#X obj 203 330 s blur-preset-cmd;
-#X obj 330 71 s mixou-preset-cmd;
-#X obj 315 114 s gain1-preset-cmd;
-#X obj 307 136 s gain2-preset-cmd;
-#X obj 327 183 s turnaround-preset-cmd;
-#X obj 311 204 s scroll-preset-cmd;
-#X obj 293 225 s guziguzi-preset-cmd;
-#X obj 281 246 s distro-preset-cmd;
-#X obj 222 309 s pitchoun-preset-cmd;
-#X obj 83 411 s volume1-preset-cmd;
-#X obj 57 431 s volume2-preset-cmd;
-#X connect 0 0 1 0;
-#X connect 0 0 2 0;
-#X connect 0 0 3 0;
-#X connect 0 0 4 0;
-#X connect 0 0 5 0;
-#X connect 0 0 6 0;
-#X connect 0 0 7 0;
-#X connect 0 0 8 0;
-#X connect 0 0 9 0;
-#X connect 0 0 10 0;
-#X connect 0 0 11 0;
-#X connect 0 0 12 0;
-#X connect 0 0 13 0;
-#X connect 0 0 14 0;
-#X connect 0 0 15 0;
+#X obj 185 399 s friz-preset-cmd;
+#X obj 289 294 s grzsh-preset-cmd;
+#X obj 211 378 s bounce-preset-cmd;
+#X obj 270 315 s aeiou-preset-cmd;
+#X obj 231 357 s blur-preset-cmd;
+#X obj 358 98 s mixou-preset-cmd;
+#X obj 343 141 s gain1-preset-cmd;
+#X obj 335 163 s gain2-preset-cmd;
+#X obj 355 210 s turnaround-preset-cmd;
+#X obj 339 231 s scroll-preset-cmd;
+#X obj 321 252 s guziguzi-preset-cmd;
+#X obj 309 273 s distro-preset-cmd;
+#X obj 250 336 s pitchoun-preset-cmd;
+#X obj 111 438 s volume1-preset-cmd;
+#X obj 85 458 s volume2-preset-cmd;
+#X obj 148 25 inlet;
+#X obj 181 72 t a;
+#X obj 148 46 t a a;
+#X obj 28 153 s fc50-osc-preset-cmd;
+#X connect 15 0 17 0;
+#X connect 16 0 0 0;
+#X connect 16 0 1 0;
+#X connect 16 0 2 0;
+#X connect 16 0 3 0;
+#X connect 16 0 4 0;
+#X connect 16 0 9 0;
+#X connect 16 0 10 0;
+#X connect 16 0 11 0;
+#X connect 16 0 12 0;
+#X connect 16 0 13 0;
+#X connect 16 0 14 0;
+#X connect 16 0 8 0;
+#X connect 16 0 7 0;
+#X connect 16 0 6 0;
+#X connect 16 0 5 0;
+#X connect 17 0 18 0;
+#X connect 17 1 16 0;
 #X restore 27 636 pd send-preset-cmds;
-#X obj 261 587 project/file-manager zephyr;
+#X obj 262 527 project/file-manager zephyr;
 #X obj 27 43 project/preset-manager all zephyr;
-#X msg 420 567 /home/pi/la-boite/projects/zephyr/presets;
-#X msg 261 443 \; pd dsp 1;
-#X msg 298 648 /Users/larralde/Projects/git-repositories/josephlarralde/la-boite/tmp/my-projects/zephyr/presets
-;
+#X msg 421 507 /home/pi/la-boite/projects/zephyr/presets;
+#X msg 535 364 \; pd dsp 1;
 #N canvas 817 184 473 383 five-first-presets-from-fc50 0;
-#X obj 42 70 r fc50-osc-page1-switch1;
-#X obj 101 91 r fc50-osc-page1-switch2;
-#X obj 141 111 r fc50-osc-page1-switch3;
-#X obj 185 131 r fc50-osc-page1-switch4;
-#X obj 244 151 r fc50-osc-page1-switch5;
-#X obj 43 190 sel 1;
-#X msg 43 210 0;
-#X obj 81 190 sel 1;
-#X obj 119 190 sel 1;
-#X obj 157 190 sel 1;
-#X obj 195 190 sel 1;
-#X msg 81 210 1;
-#X msg 119 210 2;
-#X msg 157 210 3;
-#X msg 195 210 4;
-#X obj 81 327 outlet;
-#X obj 81 244 t a a;
-#X obj 123 281 s \$0-set-preset;
-#X obj 123 302 r \$0-really-set-preset;
-#X connect 0 0 5 0;
-#X connect 1 0 7 0;
-#X connect 2 0 8 0;
-#X connect 3 0 9 0;
-#X connect 4 0 10 0;
-#X connect 5 0 6 0;
-#X connect 6 0 16 0;
-#X connect 7 0 11 0;
-#X connect 8 0 12 0;
-#X connect 9 0 13 0;
-#X connect 10 0 14 0;
-#X connect 11 0 16 0;
-#X connect 12 0 16 0;
-#X connect 13 0 16 0;
-#X connect 14 0 16 0;
-#X connect 16 0 17 0;
-#X connect 18 0 15 0;
+#X obj 60 172 sel 1;
+#X msg 60 192 0;
+#X obj 98 172 sel 1;
+#X obj 136 172 sel 1;
+#X obj 174 172 sel 1;
+#X obj 212 172 sel 1;
+#X msg 98 192 1;
+#X msg 136 192 2;
+#X msg 174 192 3;
+#X msg 212 192 4;
+#X obj 86 344 outlet;
+#X obj 86 292 s \$0-set-preset;
+#X obj 86 315 r \$0-really-set-preset;
+#X obj 244 151 r fc50-osc-page0-switch5;
+#X obj 185 131 r fc50-osc-page0-switch4;
+#X obj 141 111 r fc50-osc-page0-switch3;
+#X obj 101 91 r fc50-osc-page0-switch2;
+#X obj 42 70 r fc50-osc-page0-switch1;
+#X obj 132 239 r fc50-osc-preset;
+#X obj 132 260 - 1;
+#X obj 68 252 t a;
+#X connect 0 0 1 0;
+#X connect 1 0 20 0;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 8 0;
+#X connect 5 0 9 0;
+#X connect 6 0 20 0;
+#X connect 7 0 20 0;
+#X connect 8 0 20 0;
+#X connect 9 0 20 0;
+#X connect 12 0 10 0;
+#X connect 13 0 5 0;
+#X connect 14 0 4 0;
+#X connect 15 0 3 0;
+#X connect 16 0 2 0;
+#X connect 17 0 0 0;
+#X connect 18 0 19 0;
+#X connect 19 0 11 0;
 #X restore 27 23 pd five-first-presets-from-fc50;
-#X obj 261 625 text define -k zephyr-ctlbus;
+#X obj 262 565 text define -k zephyr-ctlbus;
 #A set A1 \; A2 \; A3 \; A4 \; A5 \; B1 \; B2 \; B3 \; B4 \; B5 \;
 f-press \; a-ele \; a-azi \; r-pos \; r-press \; A1-f-press \; A2-f-press
 \; A3-f-press \; A4-f-press \; A5-f-press \; A1-a-ele \; A2-a-ele \;
 A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 \; A4-a-azi \; A5-a-azi \; A1-r-pos \; A2-r-pos \; A3-r-pos \; A4-r-pos
 \; A5-r-pos \; A1-r-press \; A2-r-press \; A3-r-press \; A4-r-press
-\; A5-r-press \;;
-#X obj 444 441 s zephyr-ctlbus-11;
-#X obj 447 421 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 0 0;
-#X obj 447 462 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 0 0;
-#X obj 444 482 s zephyr-ctlbus-12;
+\; A5-r-press \; B1-f-press \; B2-f-press \; B3-f-press \; B4-f-press
+\; B5-f-press \; B1-a-ele \; B2-a-ele \; B3-a-ele \; B4-a-ele \; B5-a-ele
+\; B1-a-azi \; B2-a-azi \; B3-a-azi \; B4-a-azi \; B5-a-azi \; B1-r-pos
+\; B2-r-pos \; B3-r-pos \; B4-r-pos \; B5-r-pos \; B1-r-press \; B2-r-press
+\; B3-r-press \; B4-r-press \; B5-r-press \;;
 #N canvas 220 113 707 602 audio-wiring 0;
 #X obj 311 16 r mixou-connections-out;
 #X obj 331 303 jl/router~ 12 12, f 28;
 #X obj 506 255 r~ gain1-audio-out;
 #X obj 523 275 r~ gain2-audio-out;
 #X obj 45 86 s~ gain1-audio-in;
-#X obj 90 66 s~ gain2-audio-in;
+#X obj 90 111 s~ gain2-audio-in;
 #X obj 347 49 r~ turnaround-audio-out;
 #X obj 364 69 r~ scroll-audio-out;
 #X obj 380 89 r~ guziguzi-audio-out;
@@ -243,7 +207,7 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X obj 45 195 r~ volume1-audio-out;
 #X obj 45 371 dac~ 1 2;
 #X obj 90 215 r~ volume2-audio-out;
-#N canvas 556 332 385 354 mute-while-changing-preset 0;
+#N canvas 583 352 385 354 mute-while-changing-preset 0;
 #X obj 90 250 line~;
 #X msg 90 195 0;
 #X msg 129 195 1;
@@ -270,13 +234,11 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X connect 10 0 7 0;
 #X connect 11 0 2 0;
 #X restore 105 243 pd mute-while-changing-preset;
-#X obj 38 346 hip~ 30;
-#X obj 95 345 hip~ 30;
 #X obj 45 283 *~;
 #X obj 90 284 *~;
-#X obj 269 112 print aaaaa;
+#X obj 38 346 hip~ 5;
+#X obj 95 345 hip~ 5;
 #X connect 0 0 1 0;
-#X connect 0 0 37 0;
 #X connect 1 0 16 0;
 #X connect 1 1 17 0;
 #X connect 1 2 18 0;
@@ -302,17 +264,17 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X connect 14 0 1 9;
 #X connect 15 0 1 10;
 #X connect 26 0 4 0;
-#X connect 26 1 5 0;
-#X connect 29 0 35 0;
-#X connect 31 0 36 0;
-#X connect 32 0 36 1;
-#X connect 32 0 35 1;
-#X connect 33 0 30 0;
-#X connect 34 0 30 1;
-#X connect 35 0 33 0;
-#X connect 36 0 34 0;
-#X restore 261 403 pd audio-wiring;
-#N canvas 238 159 1051 531 audio-modules 1;
+#X connect 26 0 5 0;
+#X connect 29 0 33 0;
+#X connect 31 0 34 0;
+#X connect 32 0 34 1;
+#X connect 32 0 33 1;
+#X connect 33 0 35 0;
+#X connect 34 0 36 0;
+#X connect 35 0 30 0;
+#X connect 36 0 30 0;
+#X restore 535 324 pd audio-wiring;
+#N canvas 292 245 1051 531 audio-modules 1;
 #X obj 852 8 cnv 15 190 514 empty empty empty 20 12 0 14 #000000 #404040
 0;
 #X obj 8 8 cnv 15 840 514 empty empty empty 20 12 0 14 #000000 #404040
@@ -322,7 +284,6 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X obj 12 12 ./modules-mono/looper-module~ turnaround zephyr 1;
 #X obj 513 281 ./modules-mono/logdelay-module~ bounce zephyr 9 20 10000
 ;
-#X obj 346 281 ./modules-mono/gdelay-module~ blur zephyr 8 4 3000;
 #X obj 513 12 ./modules-mono/distort-module~ distro zephyr 4;
 #X obj 680 12 ./modules-mono/degrade-module~ grzsh zephyr 5;
 #X obj 12 281 ./modules-mono/formant-filter-module~ aeiou zephyr 6
@@ -341,8 +302,9 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X obj 856 379 ./modules-mono/gain-module~ volume1 zephyr;
 #X obj 856 450 ./modules-mono/gain-module~ volume2 zephyr;
 #X obj 856 163 ./abstractions/toggle-matrix mixou zephyr;
-#X restore 261 383 pd audio-modules;
-#X text 361 353 TODO : tap tempo \, looper euclidien;
+#X obj 346 281 ./modules-mono/gdelay-module~ blur zephyr 8 3 3000;
+#X restore 535 304 pd audio-modules;
+#X text 451 461 TODO : tap tempo \, looper euclidien;
 #N canvas 672 39 333 276 loadbangs 0;
 #X obj 53 36 loadbang;
 #X obj 53 214 send;
@@ -366,30 +328,138 @@ A3-a-ele \; A4-a-ele \; A5-a-ele \; A1-a-azi \; A2-a-azi \; A3-a-azi
 #X connect 8 0 1 0;
 #X connect 8 1 5 0;
 #X connect 9 0 5 1;
-#X restore 261 363 pd loadbangs;
-#X obj 420 547 r loadbang-1;
-#X obj 270 118 r loadbang-2;
-#X obj 261 423 r loadbang-3;
-#X connect 1 0 12 0;
-#X connect 3 0 17 0;
-#X connect 4 0 17 0;
-#X connect 5 0 17 0;
-#X connect 6 0 1 0;
-#X connect 7 0 1 0;
-#X connect 8 0 13 0;
-#X connect 9 0 8 0;
-#X connect 10 0 13 0;
-#X connect 11 0 13 0;
-#X connect 13 0 7 0;
-#X connect 14 0 17 1;
-#X connect 15 0 14 0;
-#X connect 17 1 14 0;
-#X connect 18 0 16 0;
-#X connect 19 0 17 1;
-#X connect 21 0 17 1;
-#X connect 22 0 18 0;
-#X connect 25 0 24 0;
-#X connect 26 0 27 0;
-#X connect 32 0 19 0;
-#X connect 33 0 6 0;
-#X connect 34 0 20 0;
+#X restore 535 284 pd loadbangs;
+#X obj 421 487 r loadbang-1;
+#X obj 535 344 r loadbang-3;
+#X obj 256 65 ./devices/fc50-osc-ui fc50-osc zephyr;
+#N canvas 126 45 1200 747 gated-receives 0;
+#X obj 46 52 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page1-switch1 A1-elevation;
+#X obj 46 81 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page1-switch2 A2-elevation;
+#X obj 46 110 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page1-switch3 A3-elevation;
+#X obj 46 139 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page1-switch4 A4-elevation;
+#X obj 46 168 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page1-switch5 A5-elevation;
+#X obj 46 200 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page1-switch1 A1-azimuth;
+#X obj 46 229 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page1-switch2 A2-azimuth;
+#X obj 46 258 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page1-switch3 A3-azimuth;
+#X obj 46 287 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page1-switch4 A4-azimuth;
+#X obj 46 316 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page1-switch5 A5-azimuth;
+#X obj 400 52 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page2-switch1 B1-elevation;
+#X obj 400 81 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page2-switch2 B2-elevation;
+#X obj 400 110 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page2-switch3 B3-elevation;
+#X obj 400 139 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page2-switch4 B4-elevation;
+#X obj 400 168 ./abstractions/gated-receive usb-guitar-accel-elevation
+fc50-osc-page2-switch5 B5-elevation;
+#X obj 400 200 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page2-switch1 B1-azimuth;
+#X obj 400 229 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page2-switch2 B2-azimuth;
+#X obj 400 258 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page2-switch3 B3-azimuth;
+#X obj 400 287 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page2-switch4 B4-azimuth;
+#X obj 400 316 ./abstractions/gated-receive usb-guitar-accel-azimuth
+fc50-osc-page2-switch5 B5-azimuth;
+#X obj 760 55 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page1-switch1
+A1-footpress;
+#X obj 760 84 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page1-switch2
+A2-footpress;
+#X obj 760 113 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page1-switch3
+A3-footpress;
+#X obj 760 171 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page1-switch5
+A5-footpress;
+#X obj 760 142 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page1-switch4
+A4-footpress;
+#X obj 749 212 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page2-switch1
+B1-footpress;
+#X obj 749 241 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page2-switch2
+B2-footpress;
+#X obj 749 270 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page2-switch3
+B3-footpress;
+#X obj 749 299 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page2-switch4
+B4-footpress;
+#X obj 749 328 ./abstractions/gated-receive fc50-osc-footsensor fc50-osc-page2-switch5
+B5-footpress;
+#X obj 191 408 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page1-switch1 A1-position;
+#X obj 191 437 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page1-switch2 A2-position;
+#X obj 191 466 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page1-switch3 A3-position;
+#X obj 191 495 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page1-switch4 A4-position;
+#X obj 191 524 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page1-switch5 A5-position;
+#X obj 190 558 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page1-switch1 A1-pressure;
+#X obj 190 587 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page1-switch2 A2-pressure;
+#X obj 190 616 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page1-switch3 A3-pressure;
+#X obj 190 645 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page1-switch4 A4-pressure;
+#X obj 190 674 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page1-switch5 A5-pressure;
+#X obj 587 418 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page2-switch1 B1-position;
+#X obj 587 447 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page2-switch2 B2-position;
+#X obj 587 476 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page2-switch3 B3-position;
+#X obj 587 505 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page2-switch4 B4-position;
+#X obj 587 534 ./abstractions/gated-receive usb-guitar-ribbon-position
+fc50-osc-page2-switch5 B5-position;
+#X obj 586 573 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page2-switch1 B1-pressure;
+#X obj 586 602 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page2-switch2 B2-pressure;
+#X obj 586 631 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page2-switch3 B3-pressure;
+#X obj 586 660 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page2-switch4 B4-pressure;
+#X obj 586 689 ./abstractions/gated-receive usb-guitar-ribbon-pressure
+fc50-osc-page2-switch5 B5-pressure;
+#X restore 535 264 pd gated-receives;
+#X obj 257 254 ./devices/usb-guitar-ui;
+#X msg 257 224 open \$1;
+#X msg 311 224 close;
+#X msg 353 224 ports;
+#X floatatom 257 205 5 0 0 0 - - - 0;
+#X obj 256 24 r loadbang-2;
+#X msg 256 44 1;
+#X obj 257 405 print comport;
+#X msg 299 588 /Users/larralde/Projects/git-repositories/josephlarralde/la-boite/project-backups/zephyr/presets
+;
+#X connect 2 0 8 0;
+#X connect 3 0 8 0;
+#X connect 4 0 8 0;
+#X connect 5 0 8 1;
+#X connect 6 0 5 0;
+#X connect 8 1 5 0;
+#X connect 9 0 7 0;
+#X connect 10 0 8 1;
+#X connect 12 0 9 0;
+#X connect 18 0 10 0;
+#X connect 19 0 11 0;
+#X connect 22 0 29 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 0;
+#X connect 25 0 22 0;
+#X connect 26 0 23 0;
+#X connect 27 0 28 0;
+#X connect 28 0 20 0;
+#X connect 30 0 8 1;
