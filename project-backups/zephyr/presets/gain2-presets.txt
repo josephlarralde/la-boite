@@ -1,2 +1,2 @@
-all loop2 gain 1 0 20 1 0 0 0;
+all silence gain 0 0 20 1 0 0 0;
 all loop gain 1 0 20 1 0 0 0;

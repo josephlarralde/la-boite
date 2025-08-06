@@ -1,2 +1,2 @@
 loop;
-loop2;
+silence;

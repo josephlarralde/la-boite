@@ -1,3 +1,11 @@
+all loop-then-grain volume 0 1 1 1 0 0 0;
+all loop-then-grain gain 0 1 1 1 0 0 0;
+all loop-then-grain drywet 1 0 11 1 0 0 0;
+all loop-then-grain predrive 0 0.9 1 1 0 0 0;
+all loop-then-grain cutoff 0 51 1 1 0 0 0;
+all loop-then-grain Q 0 0.5 1 1 0 0 0;
+all loop-then-grain postdrive 0 0.2 1 1 0 0 0;
+all loop-then-grain switchctrl 0;
 all loop2 volume 0 1 1 1 0 0 0;
 all loop2 gain 0 1 1 1 0 0 0;
 all loop2 drywet 1 0 11 1 0 0 0;

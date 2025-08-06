@@ -1,12 +1,12 @@
-all silence record 1 0 0 1 1 0 0 0;
-all silence play 1 0 0 2 1 0 0 0;
+all silence record 1 0 0 6 1 0 0 0;
+all silence play 1 0 0 7 1 0 0 0;
 all silence reverse 0 0 0 1 1 0 0 0;
 all silence pitch 0 0 1 1 0 0 0;
 all silence transpose 0;
 all silence switchctrl 0;
-all loop switchctrl 1;
-all loop record 1 0 0 1 1 0 0 0;
-all loop play 1 0 0 2 1 0 0 0;
+all loop record 1 0 0 6 1 0 0 0;
+all loop play 1 0 0 7 1 0 0 0;
 all loop reverse 0 0 0 1 1 0 0 0;
 all loop pitch 0 0 1 1 0 0 0;
 all loop transpose 0;
+all loop switchctrl 1;
